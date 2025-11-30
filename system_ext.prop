@@ -1,0 +1,13 @@
+# Bluetooth
+bluetooth.profile.sap.server.enabled=true
+
+# DPM
+persist.vendor.dpm.feature=11
+
+# Radio
+ro.telephony.sim_slots.count=2
+telephony.active_modems.max_count=2
+
+# Miscellaneous
+ro.config.isolated_compilation_enabled=true
+
