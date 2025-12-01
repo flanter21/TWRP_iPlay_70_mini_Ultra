@@ -171,7 +171,19 @@ jobs:
         echo "DEVICE_TREE_URL=${DEVICE_TREE_URL}" >> $GITHUB_ENV
 
     - name: List contents of "out" folder
-      run: tree ..
+      run: |
+        pwd
+        find . -name 'recovery.img'
+        cd workspace
+        tree out
+
+    - name: Building Image 
+      run: |
+        cd workspace
+        source build/envsetup.sh
+        export ALLOW_MISSING_DEPENDENCIES=true
+        lunch ${{ env.DEVICE_MAKEFILE }}-eng && make clean && make ${{ github.event.inputs.BUILD_TARGET }}image -j$(nproc --all)
+        echo "Done building your ${{ github.event.inputs.BUILD_TARGET }}.img"
 
     - name: Check if Recovery Exist
       run: |
