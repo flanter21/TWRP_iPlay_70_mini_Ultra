@@ -10,8 +10,8 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Inherit from iPlay_70_mini_Ultra device
 $(call inherit-product, device/alldocube/iPlay_70_mini_Ultra/device.mk)
 
-# Inherit some common Lineage stuff.
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+# Inherit some common TWRP stuff.
+$(call inherit-product, vendor/twrp/config/common.mk)
 
 PRODUCT_DEVICE := iPlay_70_mini_Ultra
 PRODUCT_NAME := lineage_iPlay_70_mini_Ultra
