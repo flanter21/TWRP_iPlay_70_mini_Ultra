@@ -14,7 +14,7 @@ $(call inherit-product, device/alldocube/iPlay_70_mini_Ultra/device.mk)
 $(call inherit-product, vendor/twrp/config/common.mk)
 
 PRODUCT_DEVICE := iPlay_70_mini_Ultra
-PRODUCT_NAME := lineage_iPlay_70_mini_Ultra
+PRODUCT_NAME := twrp_iPlay_70_mini_Ultra
 PRODUCT_BRAND := ALLDOCUBE
 PRODUCT_MODEL := iPlay 70 mini Ultra
 PRODUCT_MANUFACTURER := alldocube
