@@ -82,7 +82,7 @@ jobs:
     - name: Cleanup
       uses: rokibhasansagar/slimhub_actions@main
       with:
-        retain: "compiler_gcc,java_tools"
+        retain: "compiler_all,java_tools,manpages,browser_all,android_sdk"
       
     - name: Set Swap Space
       uses: pierotofy/set-swap-space@master
@@ -169,6 +169,9 @@ jobs:
           DEVICE_TREE_URL="${DEVICE_TREE_URL%.git}"
         fi
         echo "DEVICE_TREE_URL=${DEVICE_TREE_URL}" >> $GITHUB_ENV
+
+    - name: List contents of "out" folder
+      run: tree out
 
     - name: Check if Recovery Exist
       run: |
