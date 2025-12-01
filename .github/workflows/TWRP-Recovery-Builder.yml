@@ -158,7 +158,7 @@ jobs:
         cd workspace
         source build/envsetup.sh
         export ALLOW_MISSING_DEPENDENCIES=true
-        lunch ${{ env.DEVICE_MAKEFILE }}-eng && make clean && make ${{ github.event.inputs.BUILD_TARGET }}image -j$(nproc --all)
+        lunch ${{ env.DEVICE_MAKEFILE }}-eng && make ${{ github.event.inputs.BUILD_TARGET }}image -j$(nproc --all)
         echo "Done building your ${{ github.event.inputs.BUILD_TARGET }}.img"
       
     - name: Set Build Date # Output will be use in Release
@@ -176,14 +176,6 @@ jobs:
         find . -name 'recovery.img'
         cd workspace
         tree out
-
-    - name: Building Image 
-      run: |
-        cd workspace
-        source build/envsetup.sh
-        export ALLOW_MISSING_DEPENDENCIES=true
-        lunch ${{ env.DEVICE_MAKEFILE }}-eng && make clean && make ${{ github.event.inputs.BUILD_TARGET }}image -j$(nproc --all)
-        echo "Done building your ${{ github.event.inputs.BUILD_TARGET }}.img"
 
     - name: Check if Recovery Exist
       run: |
