@@ -118,3 +118,9 @@ DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/manifest.xml
 
 # Inherit the proprietary files
 #include vendor/alldocube/iPlay_70_mini_Ultra/BoardConfigVendor.mk
+
+# TWRP Configuration
+TW_INCLUDE_NTFS_3G := true
+TW_BRIGHTNESS_PATH := /sys/class/backlight/panel0-backlight/brightness
+TW_MAX_BRIGHTNESS := 8191
+TW_THEME := portrait_hdpi
