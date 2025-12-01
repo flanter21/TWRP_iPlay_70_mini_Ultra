@@ -81,6 +81,8 @@ jobs:
 
     - name: Cleanup
       uses: rokibhasansagar/slimhub_actions@main
+      with:
+        retain: compiler_gcc
       
     - name: Set Swap Space
       uses: pierotofy/set-swap-space@master
