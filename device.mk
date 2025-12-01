@@ -1,124 +1,35 @@
 #
-# SPDX-FileCopyrightText: The LineageOS Project
+# Copyright (C) 2025 The Android Open Source Project
+# Copyright (C) 2025 SebaUbuntu's TWRP device tree generator
+#
 # SPDX-License-Identifier: Apache-2.0
 #
 
-# Enable updating of APEXes
-$(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
-
+LOCAL_PATH := device/alldocube/iPlay_70_mini_Ultra
 # A/B
-$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
-
-PRODUCT_PACKAGES += \
-    android.hardware.boot@1.2-impl \
-    android.hardware.boot@1.2-impl.recovery \
-    android.hardware.boot@1.2-service
-
-PRODUCT_PACKAGES += \
-    update_engine \
-    update_engine_sideload \
-    update_verifier
-
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
     POSTINSTALL_PATH_system=system/bin/otapreopt_script \
     FILESYSTEM_TYPE_system=ext4 \
     POSTINSTALL_OPTIONAL_system=true
 
-AB_OTA_POSTINSTALL_CONFIG += \
-    RUN_POSTINSTALL_vendor=true \
-    POSTINSTALL_PATH_vendor=bin/checkpoint_gc \
-    FILESYSTEM_TYPE_vendor=ext4 \
-    POSTINSTALL_OPTIONAL_vendor=true
+# Boot control HAL
+PRODUCT_PACKAGES += \
+    android.hardware.boot@1.0-impl \
+    android.hardware.boot@1.0-service
 
 PRODUCT_PACKAGES += \
-    checkpoint_gc \
-    otapreopt_script
+    bootctrl.pineapple
 
-# API levels
-BOARD_API_LEVEL := 34
-PRODUCT_SHIPPING_API_LEVEL := 34
-
-# fastbootd
-PRODUCT_PACKAGES += \
-    android.hardware.fastboot@1.1-impl-mock \
-    fastbootd
-
-# Health
-PRODUCT_PACKAGES += \
-    android.hardware.health@2.1-impl \
-    android.hardware.health@2.1-service
-
-# Kernel
-PRODUCT_ENABLE_UFFD_GC := false
-
-# Overlays
-PRODUCT_ENFORCE_RRO_TARGETS := *
-
-# Partitions
-PRODUCT_USE_DYNAMIC_PARTITIONS := true
-
-# Product characteristics
-PRODUCT_CHARACTERISTICS := tablet
-
-# Rootdir
-PRODUCT_PACKAGES += \
-    dcc_extension.sh \
-    early_eth.sh \
-    init.class_main.sh \
-    init.crda.sh \
-    init.kernel.post_boot-cliffs.sh \
-    init.kernel.post_boot-cliffs_2_2_1.sh \
-    init.kernel.post_boot-cliffs_2_3_0.sh \
-    init.kernel.post_boot-cliffs_3_3_1.sh \
-    init.kernel.post_boot-cliffs_default_3_4_1.sh \
-    init.kernel.post_boot-memory.sh \
-    init.kernel.post_boot-pineapple.sh \
-    init.kernel.post_boot-pineapple_2_3_1_1.sh \
-    init.kernel.post_boot-pineapple_2_3_2_0.sh \
-    init.kernel.post_boot-pineapple_default_2_3_2_1.sh \
-    init.kernel.post_boot.sh \
-    init.mdm.sh \
-    init.qcom.class_core.sh \
-    init.qcom.coex.sh \
-    init.qcom.early_boot.sh \
-    init.qcom.efs.sync.sh \
-    init.qcom.post_boot.sh \
-    init.qcom.sdio.sh \
-    init.qcom.sensors.sh \
-    init.qcom.sh \
-    init.qcom.usb.sh \
-    init.qti.display_boot.sh \
-    init.qti.graphics.sh \
-    init.qti.kernel.debug-cliffs.sh \
-    init.qti.kernel.debug-pineapple.sh \
-    init.qti.kernel.debug.sh \
-    init.qti.kernel.early_debug-pineapple.sh \
-    init.qti.kernel.early_debug.sh \
-    init.qti.kernel.sh \
-    init.qti.media.sh \
-    init.qti.qcv.sh \
-    init.qti.write.sh \
-    qca6234-service.sh \
-    system_dlkm_modprobe.sh \
-    vendor_modprobe.sh \
+PRODUCT_STATIC_BOOT_CONTROL_HAL := \
+    bootctrl.pineapple \
+    libgptutils \
+    libz \
+    libcutils
 
 PRODUCT_PACKAGES += \
-    fstab.qcom \
-    init.qcom.factory.rc \
-    init.qcom.rc \
-    init.qcom.usb.rc \
-    init.qti.kernel.rc \
-    init.qti.ufs.rc \
-    init.target.rc \
-    init.recovery.qcom.rc \
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/etc/fstab.qcom:$(TARGET_VENDOR_RAMDISK_OUT)/first_stage_ramdisk/fstab.qcom
-
-# Soong namespaces
-PRODUCT_SOONG_NAMESPACES += \
-    $(LOCAL_PATH)
-
-# Inherit the proprietary files
-$(call inherit-product, vendor/alldocube/iPlay_70_mini_Ultra/iPlay_70_mini_Ultra-vendor.mk)
+    otapreopt_script \
+    cppreopts.sh \
+    update_engine \
+    update_verifier \
+    update_engine_sideload
