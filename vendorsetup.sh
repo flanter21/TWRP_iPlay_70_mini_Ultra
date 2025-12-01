@@ -5,6 +5,6 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-add_lunch_combo omni_iPlay_70_mini_Ultra-user
-add_lunch_combo omni_iPlay_70_mini_Ultra-userdebug
-add_lunch_combo omni_iPlay_70_mini_Ultra-eng
+add_lunch_combo twrp_iPlay_70_mini_Ultra-user
+add_lunch_combo twrp_iPlay_70_mini_Ultra-userdebug
+add_lunch_combo twrp_iPlay_70_mini_Ultra-eng
