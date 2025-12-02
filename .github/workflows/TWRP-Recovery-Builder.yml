@@ -82,7 +82,7 @@ jobs:
     - name: Cleanup
       uses: rokibhasansagar/slimhub_actions@main
       with:
-        retain: "compiler_all,java_tools,manpages,browser_all,android_sdk,toolcache_all,php,database"
+        retain: "compiler_all,java_tools,manpages,browser_all,android_sdk,toolcache_all,php,database,container_tools,vcs,vim,dotnet,vcpkg,mono,ruby,nodejs_npm,pipx"
       
     - name: Set Swap Space
       uses: pierotofy/set-swap-space@master
