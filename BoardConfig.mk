@@ -72,7 +72,6 @@ BOARD_SUPER_PARTITION_GROUPS := alldocube_dynamic_partitions
 BOARD_ALLDOCUBE_DYNAMIC_PARTITIONS_PARTITION_LIST := \
     vendor \
     product \
-#    system_dlkm \
     system_ext \
     system \
     vendor_dlkm \
