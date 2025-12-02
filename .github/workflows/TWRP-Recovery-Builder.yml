@@ -175,6 +175,7 @@ jobs:
         pwd
         find . -name 'recovery.img'
         cd workspace
+        cat out/error.log
         tree out
 
     - name: Check if Recovery Exist
