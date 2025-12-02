@@ -177,6 +177,14 @@ jobs:
         cd workspace
         cat out/error.log
         tree out
+        ls -lah out
+        7z out.7z .
+
+    - name: Upload Image and Image.gz and boot.img
+      uses: actions/upload-artifact@v4
+      with:
+        name: Image-${{ inputs.version_name }}_${{ inputs.os_patch_level }}
+        path: ./workspace/out.7z
 
     - name: Check if Recovery Exist
       run: |
